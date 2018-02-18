@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import SearchBar from './SearchBar'
+import RegistryList from './RegistryList';
+import Paginator from './Paginator';
 var request = require('request');
 
 class MainScreen extends Component {
@@ -14,6 +17,7 @@ class MainScreen extends Component {
         }
 
         this.incrementalSearch = this.incrementalSearch.bind(this); // Binds it to use it in onChange of search input
+        this.switchPage = this.switchPage.bind(this);
     }
 
     incrementalSearch(event){
@@ -113,24 +117,9 @@ class MainScreen extends Component {
     render() {
         return (
         <div>
-            <h1 className='searchInstruction'>Skriv inn navn eller organisasjonsnummer</h1>
-            <input className='searchField' type='text' onChange={this.incrementalSearch}/>
-            {this.state.companyList.map(element => 
-            <details className='companyListing'>
-                <summary class='listingHeader'>{element.navn}</summary>  
-                <ul>              
-                    {element.organisasjonsnummer !== undefined && <li>Organisasjonsnummer: {element.organisasjonsnummer} </li>}
-                    {element.organisasjonsform !== undefined && <li>Organisasjonsform: {element.organisasjonsform} </li>} 
-                    {element.stiftelsesdato !== undefined && <li>Stiftelsesdato: {element.stiftelsesdato} </li>}
-                    {element.konkurs !== undefined && <li>Konkurs?: {element.konkurs} </li>}
-                    {element.kontaktinformasjon && element.kontaktinformasjon.telefonnummer !== undefined && <li>Telefonnummer: {element.kontaktinformasjon.telefonnummer} </li>}
-                    {element.kontaktinformasjon && element.kontaktinformasjon.hjemmeside !== undefined && <li>Hjemmeside: {element.kontaktinformasjon.hjemmeside} </li>}
-                </ul>
-            </details>)}
-            <div className='paginator'>
-                {this.state.prev !== null && <button onClick={() => this.switchPage(false)} className='paginatorButton'>&larr;</button>}
-                {this.state.next !== null && <button onClick={() => this.switchPage(true)} className='paginatorButton'>&rarr;</button>}
-            </div>
+            <SearchBar onChange={this.incrementalSearch}/>
+            <RegistryList companyList={this.state.companyList}/>
+            <Paginator next={this.state.next} prev={this.state.prev} switchPage={this.switchPage}/>
         </div>
         );
     }
