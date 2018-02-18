@@ -3,3 +3,27 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.searchInstruction{
+  text-align: center;
+}
+
+.searchField{
+  margin: 0 auto;
+  display: block;
+}
+
+.companyListing{
+  text-align: center;
+}
+
+.paginator {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.paginatorButton{
+  display: inline-block;
+  padding: 8px 16px;
+}
