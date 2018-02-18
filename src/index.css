@@ -2,19 +2,39 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #333;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .searchInstruction{
   text-align: center;
+  color: #FFF;
 }
 
 .searchField{
   margin: 0 auto;
   display: block;
+  margin-bottom: 20px;
 }
 
 .companyListing{
   text-align: center;
+  background: #EEE;
+}
+
+.listingHeader{
+  text-align: center;
+  margin:0px auto;
+  vertical-align: top;
+  background: #444;
+  color: #FFF;
+  padding: 10px 10px;
+  cursor: pointer;
+  user-select: none; /* Turns off annoying text selection */
+  margin-bottom: 10px;
 }
 
 .paginator {

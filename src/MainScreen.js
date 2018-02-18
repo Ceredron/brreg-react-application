@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 var request = require('request');
-/**
- * To implement
- *  Paginator
- *  CSS Styling
- */
 
 class MainScreen extends Component {
 
@@ -122,7 +117,7 @@ class MainScreen extends Component {
             <input className='searchField' type='text' onChange={this.incrementalSearch}/>
             {this.state.companyList.map(element => 
             <details className='companyListing'>
-                <summary>{element.navn}</summary>  
+                <summary class='listingHeader'>{element.navn}</summary>  
                 <ul>              
                     {element.organisasjonsnummer !== undefined && <li>Organisasjonsnummer: {element.organisasjonsnummer} </li>}
                     {element.organisasjonsform !== undefined && <li>Organisasjonsform: {element.organisasjonsform} </li>} 
